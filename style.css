@@ -1,0 +1,40 @@
+body{
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: lavender;
+    position: relative;
+}
+
+#dealerArea{
+    height: 30%;
+    background-color: pink;
+}
+
+#playerArea{
+    height: 30%;
+    background-color: lightgreen;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+.cardContainer{
+    height: 150px;
+    width: 100px;
+    background-color: white;
+    border-radius: 5%;
+    border: 2px solid black;
+    position: relative;
+    float: left;
+}
+.suit{
+    position: absolute;
+    left: 5%;
+    top: 5%;
+}
+.value{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}

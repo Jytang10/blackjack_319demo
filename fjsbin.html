@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+
+class CalcStorage{
+  constructor(){
+    this._data = [];
+  }
+  set data( newValue ){
+    var lastPosition = this._data.length-1;
+    var availableOps = '+-/*xX';
+    if( isNaN( this._data[lastPosition]) || availableOps.indexOf(newValue)!==-1){
+      this._data.push( newValue );
+    } else {
+      this._data[ lastPosition ] += newValue; 
+    }
+  }
+  get data(){
+    return this._data.join('');
+  }
+  get result(){
+    while(this._data.length>=3){
+      var n1 = this._data[0];
+      var n2 = this._data[2];
+      var o = this._data[1];
+      var result = this.doMath(n1, n2, o);
+      this._data.splice(0,3,result);
+    }
+    return this._data;
+  }
+  doMath(num1, num2, op){ //num1 = 2, num2 = 4, op = +
+    debugger;
+    num1 = parseFloat(num1);
+    num2 = parseFloat(num2);
+    var calcConvert = {
+      '+': function(){ return num1+num2;},
+      '-': function(){ return num1-num2;},
+      '*': function(){ return num1*num2;},
+      '/': ()=> num1/num2
+    }
+    calcConvert['x'] = calcConvert['X'] = calcConvert['*']
+    return calcConvert[op]();
+  }
+}
+
+var calcData = new CalcStorage();
+calcData.data = '3';
+calcData.data = 'X';
+calcData.data = '4';
+calcData.data = '7';
+
+console.log(calcData.result);
+
+
+
+
+
+
+
+
+
+</script>
+</head>
+<body>
+    
+</body>
+</html>
